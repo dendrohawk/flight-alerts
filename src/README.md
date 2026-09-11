@@ -1,50 +1,38 @@
-# Mergington High School Activities API
+# Routewise
 
-A super simple FastAPI application that allows students to view and sign up for extracurricular activities.
+Routewise is a small FastAPI app for watching affordable, nonstop flights from
+Kansas City to airports serving Port St. Lucie.
 
-## Features
+## Run locally
 
-- View all available extracurricular activities
-- Sign up for activities
+```text
+pip install -r requirements.txt
+uvicorn src.app:app --reload
+```
 
-## Getting Started
+The UI is available at `http://localhost:8000/`. Live searches use SerpApi's
+Google Flights endpoint only when `SERPAPI_KEY` is present in the server
+environment:
 
-1. Install the dependencies:
+```text
+SERPAPI_KEY=your-key-here uvicorn src.app:app --reload
+```
 
-   ```
-   pip install fastapi uvicorn
-   ```
+Do not put the key in the frontend, source files, or a committed `.env` file.
+Without the key, or when SerpApi returns an error/no results, the UI clearly
+shows the existing sample cards instead of presenting them as live fares.
 
-2. Run the application:
+## Live search behavior
 
-   ```
-   python app.py
-   ```
+`POST /api/flights/search` translates the form to SerpApi parameters:
 
-3. Open your browser and go to:
-   - API documentation: http://localhost:8000/docs
-   - Alternative documentation: http://localhost:8000/redoc
-
-## API Endpoints
-
-| Method | Endpoint                                                          | Description                                                         |
-| ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
-
-## Data Model
-
-The application uses a simple data model with meaningful identifiers:
-
-1. **Activities** - Uses activity name as identifier:
-
-   - Description
-   - Schedule
-   - Maximum number of participants allowed
-   - List of student emails who are signed up
-
-2. **Students** - Uses email as identifier:
-   - Name
-   - Grade level
-
-All data is stored in memory, which means data will be reset when the server restarts.
+- `MCI` is the departure airport; `FLL,MIA,PBI` represent the Port St. Lucie
+  search area.
+- Travelers map to `adults`, nonstop maps to `stops=1`, and excluded airline
+  codes (when supplied) map to `exclude_airlines`.
+- Each outbound date in the selected window is queried separately because the
+  provider accepts one `outbound_date` per request.
+- The arrival deadline and return-after time become hourly SerpApi ranges.
+  SerpApi does not support minute-precise deadlines, so those constraints are
+  approximate. Results are sorted by price and include a Google Flights
+  booking/search link.
