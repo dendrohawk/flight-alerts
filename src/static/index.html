@@ -24,7 +24,7 @@
         <div class="eyebrow">SMART FLIGHT WATCH</div>
         <h1>Keep an eye on<br /><em>the right fare.</em></h1>
         <p class="hero-copy">A focused search for affordable, nonstop flights to the Treasure Coast — with an alert ready when prices move.</p>
-        <div class="provider-note"><span class="spark">✦</span><span><strong>Mock search state</strong><br />Connect a flight provider to see live prices and book.</span></div>
+        <div class="provider-note" id="provider-status"><span class="spark">✦</span><span><strong>Sample planning state</strong><br />Search for live fares when a provider is configured.</span></div>
       </section>
 
       <section class="search-card" aria-labelledby="search-heading">
@@ -66,11 +66,11 @@
             </label>
             <label class="field">
               <span>Arrive by</span>
-              <input type="text" value="Fri, Dec 19 · 4:00 PM" readonly />
+              <input id="arrival-deadline" type="text" value="Fri, Dec 19 · 4:00 PM" readonly />
             </label>
             <label class="field">
               <span>Return</span>
-              <input type="text" value="Sun, Dec 20 · after 10:00 AM" readonly />
+              <input id="return-timing" type="text" value="Sun, Dec 20 · after 10:00 AM" readonly />
             </label>
           </div>
 
@@ -114,7 +114,7 @@
               <div class="flight-meta"><span>Fri, Dec 18 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span>Typical price</span></div>
             </article>
           </div>
-          <p class="result-disclaimer">Sample results shown for planning. Fares, schedules, baggage, and availability are not live until a provider is connected.</p>
+          <p id="result-disclaimer" class="result-disclaimer">Sample results shown for planning. Fares, schedules, baggage, and availability are not live until a provider is connected.</p>
         </section>
 
         <aside class="side-column">
