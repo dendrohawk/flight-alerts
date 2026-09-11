@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#102a43" />
+    <title>Routewise | Affordable direct flight alerts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Routewise home">
+        <span class="brand-mark" aria-hidden="true">↗</span>
+        <span>routewise</span>
+      </a>
+      <div class="topbar-status"><span class="status-dot"></span> Planning mode</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">SMART FLIGHT WATCH</div>
+        <h1>Keep an eye on<br /><em>the right fare.</em></h1>
+        <p class="hero-copy">A focused search for affordable, nonstop flights to the Treasure Coast — with an alert ready when prices move.</p>
+        <div class="provider-note"><span class="spark">✦</span><span><strong>Mock search state</strong><br />Connect a flight provider to see live prices and book.</span></div>
+      </section>
+
+      <section class="search-card" aria-labelledby="search-heading">
+        <div class="card-heading">
+          <div>
+            <span class="step-label">01 / SEARCH</span>
+            <h2 id="search-heading">Build your trip watch</h2>
+          </div>
+          <span class="direct-badge">↝ Nonstop only</span>
+        </div>
+        <form id="flight-form">
+          <div class="form-grid route-grid">
+            <label class="field">
+              <span>From</span>
+              <div class="input-wrap"><span class="field-icon">⌖</span><input id="origin" value="MCI" maxlength="3" aria-label="Origin airport" /></div>
+              <small>Kansas City International</small>
+            </label>
+            <div class="route-line" aria-hidden="true">→</div>
+            <label class="field">
+              <span>To / search radius</span>
+              <div class="input-wrap"><span class="field-icon">⌖</span><input id="destination" value="Port St. Lucie, FL" aria-label="Destination" /></div>
+              <small>Any airport within 2.5 hr drive</small>
+            </label>
+            <label class="field compact-field">
+              <span>Travelers</span>
+              <div class="input-wrap"><span class="field-icon">♙</span><input id="travelers" type="number" min="1" value="2" /></div>
+              <small>Adults</small>
+            </label>
+          </div>
+
+          <div class="form-grid dates-grid">
+            <label class="field">
+              <span>Outbound window</span>
+              <select id="outbound-window">
+                <option>Thu, Dec 17 – Mon, Dec 21, 2026</option>
+                <option>Thu, Dec 17 – Fri, Dec 18, 2026</option>
+                <option>Fri, Dec 18 – Sat, Dec 19, 2026</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Arrive by</span>
+              <input type="text" value="Fri, Dec 19 · 4:00 PM" readonly />
+            </label>
+            <label class="field">
+              <span>Return</span>
+              <input type="text" value="Sun, Dec 20 · after 10:00 AM" readonly />
+            </label>
+          </div>
+
+          <div class="form-footer">
+            <div class="constraint-summary"><span class="check">✓</span> We’ll only surface flights that fit every constraint.</div>
+            <button class="primary-button" type="submit">Find affordable flights <span>↗</span></button>
+          </div>
+        </form>
+      </section>
+
+      <div class="content-grid">
+        <section class="results-panel" aria-labelledby="results-heading">
+          <div class="section-heading">
+            <div><span class="step-label">02 / SHORTLIST</span><h2 id="results-heading">Best matches</h2></div>
+            <span class="result-count">3 options · sorted by price</span>
+          </div>
+          <div id="flight-results" class="flight-list">
+            <article class="flight-card featured">
+              <div class="best-value">BEST VALUE</div>
+              <div class="flight-main">
+                <div class="airline"><span class="airline-logo">SX</span><div><strong>Sun Country</strong><small>SY 118 · Boeing 737</small></div></div>
+                <div class="flight-times"><div><strong>6:10 AM</strong><small>MCI</small></div><span class="duration">3h 08m <i>—</i> nonstop</span><div><strong>10:18 AM</strong><small>FLL</small></div></div>
+                <div class="price"><strong>$486</strong><small>round trip / 2</small></div>
+              </div>
+              <div class="flight-meta"><span>Thu, Dec 17 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span class="good-price">↓ $42 this week</span></div>
+            </article>
+            <article class="flight-card">
+              <div class="flight-main">
+                <div class="airline"><span class="airline-logo blue">AA</span><div><strong>American Airlines</strong><small>AA 2124 · Airbus A321</small></div></div>
+                <div class="flight-times"><div><strong>7:25 AM</strong><small>MCI</small></div><span class="duration">3h 02m <i>—</i> nonstop</span><div><strong>11:27 AM</strong><small>FLL</small></div></div>
+                <div class="price"><strong>$534</strong><small>round trip / 2</small></div>
+              </div>
+              <div class="flight-meta"><span>Thu, Dec 17 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span>Typical price</span></div>
+            </article>
+            <article class="flight-card">
+              <div class="flight-main">
+                <div class="airline"><span class="airline-logo orange">NK</span><div><strong>Spirit Airlines</strong><small>NK 304 · Airbus A320</small></div></div>
+                <div class="flight-times"><div><strong>9:40 AM</strong><small>MCI</small></div><span class="duration">3h 10m <i>—</i> nonstop</span><div><strong>1:50 PM</strong><small>FLL</small></div></div>
+                <div class="price"><strong>$562</strong><small>round trip / 2</small></div>
+              </div>
+              <div class="flight-meta"><span>Fri, Dec 18 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span>Typical price</span></div>
+            </article>
+          </div>
+          <p class="result-disclaimer">Sample results shown for planning. Fares, schedules, baggage, and availability are not live until a provider is connected.</p>
+        </section>
+
+        <aside class="side-column">
+          <section class="alert-card" aria-labelledby="alert-heading">
+            <div class="section-heading compact"><div><span class="step-label">03 / ALERT</span><h2 id="alert-heading">Price watch</h2></div><span class="bell">♢</span></div>
+            <p>We’ll let you know when this trip drops below your target.</p>
+            <label class="field"><span>Alert me below</span><div class="price-input"><span>$</span><input id="target-price" type="number" value="500" min="1" /><span class="per-trip">for 2 tickets</span></div></label>
+            <label class="toggle-row"><span><strong>Send me weekly updates</strong><small>Only while prices are changing</small></span><input id="weekly-alert" type="checkbox" checked /><span class="toggle" aria-hidden="true"></span></label>
+            <button class="secondary-button" id="alert-button" type="button">Create price alert <span>↗</span></button>
+            <div id="alert-message" class="alert-message" role="status" aria-live="polite"></div>
+          </section>
+
+          <section class="airport-card" aria-labelledby="airport-heading">
+            <div class="section-heading compact"><div><span class="step-label">ARRIVAL OPTIONS</span><h2 id="airport-heading">Airports that work</h2></div></div>
+            <p>All within your approximate 2.5-hour drive radius.</p>
+            <div class="airport-row"><span class="airport-code">FLL</span><span><strong>Fort Lauderdale</strong><small>1h 55m drive · most options</small></span><span class="airport-check">✓</span></div>
+            <div class="airport-row"><span class="airport-code">MIA</span><span><strong>Miami International</strong><small>2h 20m drive · more routes</small></span><span class="airport-check">✓</span></div>
+            <div class="airport-row muted"><span class="airport-code">PBI</span><span><strong>Palm Beach</strong><small>45m drive · no nonstop match</small></span><span class="airport-check">–</span></div>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <footer><span>routewise</span><span>Made for better travel decisions.</span><span>Prices shown in USD</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
