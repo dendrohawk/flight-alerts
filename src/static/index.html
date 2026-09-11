@@ -85,24 +85,10 @@
         <section class="results-panel" aria-labelledby="results-heading">
           <div class="section-heading">
             <div><span class="step-label">02 / SHORTLIST</span><h2 id="results-heading">Best matches</h2></div>
-            <span class="result-count" aria-live="polite">3 options · sorted by price</span>
-          </div>
-          <div class="airline-filter" aria-labelledby="airline-filter-label">
-            <div class="filter-heading">
-              <div>
-                <span class="filter-label" id="airline-filter-label">Hide airlines</span>
-                <small>Remove carriers you do not want to see.</small>
-              </div>
-              <label class="airline-select-label" for="airline-select">Add exclusion
-                <select id="airline-select">
-                  <option value="">Choose an airline</option>
-                </select>
-              </label>
-            </div>
-            <div id="excluded-airlines" class="excluded-airlines" aria-live="polite"></div>
+            <span class="result-count">3 options · sorted by price</span>
           </div>
           <div id="flight-results" class="flight-list">
-            <article class="flight-card featured" data-airline="Sun Country">
+            <article class="flight-card featured">
               <div class="best-value">BEST VALUE</div>
               <div class="flight-main">
                 <div class="airline"><span class="airline-logo">SX</span><div><strong>Sun Country</strong><small>SY 118 · Boeing 737</small></div></div>
@@ -111,7 +97,7 @@
               </div>
               <div class="flight-meta"><span>Thu, Dec 17 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span class="good-price">↓ $42 this week</span></div>
             </article>
-            <article class="flight-card" data-airline="American Airlines">
+            <article class="flight-card">
               <div class="flight-main">
                 <div class="airline"><span class="airline-logo blue">AA</span><div><strong>American Airlines</strong><small>AA 2124 · Airbus A321</small></div></div>
                 <div class="flight-times"><div><strong>7:25 AM</strong><small>MCI</small></div><span class="duration">3h 02m <i>—</i> nonstop</span><div><strong>11:27 AM</strong><small>FLL</small></div></div>
@@ -119,7 +105,7 @@
               </div>
               <div class="flight-meta"><span>Thu, Dec 17 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span>Typical price</span></div>
             </article>
-            <article class="flight-card" data-airline="Spirit Airlines">
+            <article class="flight-card">
               <div class="flight-main">
                 <div class="airline"><span class="airline-logo orange">NK</span><div><strong>Spirit Airlines</strong><small>NK 304 · Airbus A320</small></div></div>
                 <div class="flight-times"><div><strong>9:40 AM</strong><small>MCI</small></div><span class="duration">3h 10m <i>—</i> nonstop</span><div><strong>1:50 PM</strong><small>FLL</small></div></div>
@@ -127,10 +113,6 @@
               </div>
               <div class="flight-meta"><span>Fri, Dec 18 → Sun, Dec 20</span><span>FLL · 1h 55m to Port St. Lucie</span><span>Typical price</span></div>
             </article>
-          </div>
-          <div id="empty-results" class="empty-results" role="status" hidden>
-            <strong>No flights match your airline preferences.</strong>
-            <span>Remove an exclusion to bring those options back.</span>
           </div>
           <p class="result-disclaimer">Sample results shown for planning. Fares, schedules, baggage, and availability are not live until a provider is connected.</p>
         </section>
