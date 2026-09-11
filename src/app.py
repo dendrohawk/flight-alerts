@@ -117,6 +117,9 @@ def _search_serpapi(criteria: FlightSearch, api_key: str) -> tuple[list[dict], i
     return_date = _parse_return_date(criteria.return_timing, outbound_end)
     if return_date < outbound_start:
         raise HTTPException(status_code=422, detail="Return date must follow the outbound window.")
+    # A round-trip search cannot depart after its return date. The form's
+    # selectable window can be wider than the chosen return timing.
+    outbound_end = min(outbound_end, return_date)
 
     params = {
         "engine": "google_flights",
@@ -233,6 +236,7 @@ def search_flights(criteria: FlightSearch):
         "searched_dates": searched_dates,
         "limitations": [
             "SerpApi accepts one outbound date per request; the selected date window is searched one day at a time.",
+            "Outbound dates after the selected return date are skipped because round trips cannot return before departure.",
             "Arrival and return timing filters are hourly ranges, so minute-level deadlines are approximate.",
         ],
     }
